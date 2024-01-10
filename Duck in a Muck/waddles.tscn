@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxusmt1oi1ckl"]
+
+[ext_resource type="Texture2D" uid="uid://bbp40kt7sm7kl" path="res://art/duck_run.png" id="1_lmw7f"]
+[ext_resource type="Script" path="res://waddles.gd" id="1_x5rde"]
+[ext_resource type="Texture2D" uid="uid://bor5rle2dcn8v" path="res://art/duck_run_jump-5.png.png" id="2_ig1dn"]
+[ext_resource type="AudioStream" uid="uid://m4p7tjxq4trc" path="res://art/SFX_Jump_07.wav" id="4_qq75i"]
+[ext_resource type="AudioStream" uid="uid://dblis2qarxha2" path="res://art/quack.mp3" id="5_bvvfu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kip6o"]
+atlas = ExtResource("1_lmw7f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l483j"]
+atlas = ExtResource("1_lmw7f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xldh5"]
+atlas = ExtResource("1_lmw7f")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uhn2"]
+atlas = ExtResource("1_lmw7f")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70l6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kip6o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ig1dn")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kip6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l483j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xldh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uhn2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0qnh"]
+size = Vector2(16, 24)
+
+[node name="Waddles" type="CharacterBody2D"]
+light_mask = 3
+visibility_layer = 3
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_x5rde")
+jump_time_to_descent = 0.25
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.33333, -3.33333)
+sprite_frames = SubResource("SpriteFrames_70l6q")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a0qnh")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qq75i")
+volume_db = -12.18
+
+[node name="quack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_bvvfu")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuykrn7aguwsx"]
+
+[ext_resource type="PackedScene" uid="uid://c8h21k1jg30bk" path="res://menu_screen.tscn" id="1_ni780"]
+[ext_resource type="PackedScene" uid="uid://xb73jw71xovb" path="res://Levels/test_level.tscn" id="2_mr3i8"]
+
+[node name="StartGame" type="Node2D"]
+
+[node name="MenuScreen" parent="." instance=ExtResource("1_ni780")]
+
+[node name="TestLevel" parent="MenuScreen" instance=ExtResource("2_mr3i8")]
+visible = false
+position = Vector2(-2.08165e-12, 576)

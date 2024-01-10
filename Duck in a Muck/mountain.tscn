@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://brt3jvwa6qpak"]
+
+[ext_resource type="Texture2D" uid="uid://l8xqux421kgv" path="res://art/layers/parallax-mountain-bg.png" id="1_na0l1"]
+[ext_resource type="Texture2D" uid="uid://d457vqjxuets" path="res://art/layers/parallax-mountain-montain-far.png" id="2_46hgv"]
+[ext_resource type="Texture2D" uid="uid://dw4jcojm2nyww" path="res://art/layers/parallax-mountain-mountains.png" id="3_070lq"]
+[ext_resource type="Texture2D" uid="uid://bpsc5nnyrvv73" path="res://art/layers/parallax-mountain-trees.png" id="4_idurt"]
+[ext_resource type="Texture2D" uid="uid://c401ia6fasexh" path="res://art/layers/parallax-mountain-foreground-trees.png" id="5_sipqt"]
+
+[node name="Mountain" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_na0l1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture = ExtResource("2_46hgv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture = ExtResource("3_070lq")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture = ExtResource("4_idurt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("5_sipqt")

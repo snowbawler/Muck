@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://et6k83wqvw7"]
+
+[node name="End Scene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 151.0
+offset_top = 159.0
+offset_right = 883.0
+offset_bottom = 456.0
+text = "THANKS FOR PLAYING 
+
+Made by Team Duck:
+Alberto Perez
+Jonathan Peterson 
+Donne Su
+Ernest Ramos"
+horizontal_alignment = 1

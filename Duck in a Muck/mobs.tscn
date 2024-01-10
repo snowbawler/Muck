@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://x3w7q73pbsqn"]
+
+[ext_resource type="Script" path="res://mobs.gd" id="1_p7bgx"]
+[ext_resource type="Texture2D" uid="uid://cyj1l6c7skju6" path="res://art/Mud_ground.png" id="2_mhj23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va1x8"]
+atlas = ExtResource("2_mhj23")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd2td"]
+atlas = ExtResource("2_mhj23")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w47jw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va1x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd2td")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajxl4"]
+radius = 51.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6ty0"]
+radius = 12.8
+
+[node name="Mobs" type="CharacterBody2D"]
+light_mask = 2
+visibility_layer = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_p7bgx")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w47jw")
+animation = &"Walk"
+
+[node name="EnemyVision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyVision"]
+shape = SubResource("CircleShape2D_ajxl4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a6ty0")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="body_entered" from="EnemyVision" to="." method="_on_enemy_vision_body_entered"]
+[connection signal="body_exited" from="EnemyVision" to="." method="_on_enemy_vision_body_exited"]
